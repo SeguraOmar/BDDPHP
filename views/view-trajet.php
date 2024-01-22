@@ -18,8 +18,6 @@
         <label for="dureeTrajet">Durée du trajet:</label>
         <input type="time" id="dureeTrajet" name="dureeTrajet" required>
 
-        <label for="imageTrajet">Image du trajet (optionnel):</label>
-        <input type="file" id="imageTrajet" name="imageTrajet" accept="image/*">
 
        Type de transport : <select id="transportType" name="transportType" required>
             <option value="1" <?php if (!empty($transport_id) && $transport_id == "1") {
