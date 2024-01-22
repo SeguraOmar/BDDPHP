@@ -86,37 +86,37 @@ $message = "Bonjour $prenom $nom, votre inscription a bien été enregistrée.";
 
 // Afficher la synthèse des informations et le message de confirmation
 if(empty($errors)){
-    // Instance d'une PDO 
-    try {
-        $dbName = "trajet";
-        $dbUser = "Omar";
-        $dbPassword ="Frizbee76";
-        $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser,  $dbPassword);
-        
-        
-        //stockage de ma requete toujours avant le catch
-        $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`) VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
-        
-        $query = $db->prepare($sql);
-        
-        $lastname = htmlspecialchars($_POST['lastname']);
-        $firstname = htmlspecialchars($_POST['firstname']);
-        $pseudo = htmlspecialchars($_POST['pseudo']);
-        $email = $_POST['email'];
-        $dob = $_POST['dob'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $id_enterprise =$_POST['id_enterprise'];
-        $userValidate = 1;
+// Instance d'une PDO 
+try {
+    $dbName = "trajet";
+    $dbUser = "Omar";
+    $dbPassword ="Frizbee76";
+    $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser,  $dbPassword);
+    
+    
+    //stockage de ma requete toujours avant le catch
+    $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`) VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
+    
+    $query = $db->prepare($sql);
+    
+    $lastname = htmlspecialchars($_POST['lastname']);
+    $firstname = htmlspecialchars($_POST['firstname']);
+    $pseudo = htmlspecialchars($_POST['pseudo']);
+    $email = $_POST['email'];
+    $dob = $_POST['dob'];
+    $password = $_POST['password'];
+    $id_enterprise =$_POST['id_enterprise'];
+    $userValidate = 1;
 
-        
-        Utilisateur::create($userValidate, $lastname, $firstname, $pseudo, $email, $dob, $password, $id_enterprise);
-        
+    
+    Utilisateur::create($userValidate, $lastname, $firstname, $pseudo, $email, $dob, $password, $id_enterprise);
+    
 
 
-    } catch (PDOException $e){
-        echo "Erreur : " . $e->getMessage();
-        die();
-    }
+} catch (PDOException $e){
+    echo "Erreur : " . $e->getMessage();
+    die();
+}
 include('../views/view-summary.php');
 exit; // Arrêter l'exécution du script
 }

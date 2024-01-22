@@ -51,6 +51,82 @@ class Utilisateur {
             die();
         }
     }
-}
 
+    /**
+     * Methode permettant de récupérer les informations d'un utilisateur avec son pseudo comme paramètre
+     * 
+     * @param string $pseudo pseudo de l'utilisateur
+     * 
+     * @return bool
+     */
+    public static function checkPseudoExists(string $pseudo): bool
+    {
+        // le try and catch permet de gérer les erreurs, nous allons l'utiliser pour gérer les erreurs liées à la base de données
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+
+            // stockage de ma requete dans une variable
+            $sql = "SELECT * FROM `userprofil` WHERE `user_pseudo` = :pseudo";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            // on vérifie si le résultat est vide car si c'est le cas, cela veut dire que le pseudo n'existe pas
+            if (empty($result)) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
+
+    /**
+     * Méthode permettant de récupérer les informations d'un utilisateur avec son pseudo comme paramètre
+     * 
+     * @param string $pseudo Pseudo de l'utilisateur
+     * 
+     * @return array
+     */
+    public static function getInfos(string $pseudo): array
+    {
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+
+            // stockage de ma requete dans une variable
+            $sql = "SELECT * FROM `userprofil` WHERE `user_pseudo` = :pseudo";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            // on retourne le résultat
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
+}
 ?>
