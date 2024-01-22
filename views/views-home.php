@@ -19,7 +19,7 @@
 </div>     
 
 <div class="button">
-    <a href="../controllers/controller-trajet.php">button>Créer un trajet</button></a>
+    <a href="../controllers/controller-trajet.php"><button>Créer un trajet</button></a>
     <button>Modifier un trajet</button>
 </div>
 
