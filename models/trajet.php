@@ -3,7 +3,7 @@
 class trajet {
 
 
-public static function create ( int $rideDistance, string $rideDate,  int $user_id, int $transport_id) {
+public static function create ( string $rideDate, string $rideDistance,  int $user_id, int $transport_id) {
 
 try {
     // Les informations de connexion à la base de données
@@ -18,9 +18,9 @@ try {
 
    $query = $db->prepare($sql);
 
-   $query->bindValue(':ridedistance', htmlspecialchars($rideDistance), PDO::PARAM_INT);
-   $query->bindValue(':ridedate', htmlspecialchars($rideDate), PDO::PARAM_STR);
-   $query->bindValue(':userid', $user_id, PDO::PARAM_INT);
+   $query->bindValue(':rideDistance', ($rideDistance), PDO::PARAM_STR);
+   $query->bindValue(':rideDate', ($rideDate), PDO::PARAM_STR);
+   $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
    $query->bindValue(':transport_id', $transport_id, PDO::PARAM_INT);
    
 
@@ -30,7 +30,33 @@ try {
    catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
     die();
-   }
+   }}
 
- }
+
+   
+   public static function historique(int $user_id)
+   {
+       try {
+           // Les informations de connexion à la base de données
+           $dbName = "trajet";
+           $dbUser = "Omar";
+           $dbPassword = "Frizbee76";
+
+           // Création de l'objet PDO pour la connexion à la base de données
+           $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser, $dbPassword);
+           // Paramétrage des erreurs PDO pour les afficher en cas de problème
+           $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+           $sql = "SELECT * FROM ride NATURAL JOIN transport WHERE user_id = :user_id";
+           // Préparation de la requête
+           $query = $db->prepare($sql);
+           $query->bindValue(":user_id", $user_id, PDO::PARAM_INT) .
+               $query->execute();
+               $result =  $query->fetchAll(PDO::FETCH_ASSOC);
+               return $result; 
+       } catch (PDOException $e) {
+           // En cas d'erreur, affichage du message d'erreur et arrêt du script
+           echo "Erreur : " . $e->getMessage();
+           die();
+       }
+   }
 }

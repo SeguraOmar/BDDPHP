@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style/trajet.css">
     <title>Document</title>
 </head>
 <body>
@@ -10,16 +11,15 @@
 
 <form class="formTrajet" action="../controllers/controller-trajet.php" method="post" enctype="multipart/form-data">
         <label for="dateTrajet">Date du trajet:</label>
-        <input type="datetime-local" id="dateTrajet" name="dateTrajet" required>
+        <input type="date" id="dateTrajet" name="dateTrajet" required>
 
         <label for="distanceParcourue">Distance parcourue (en km):</label>
         <input type="number" step="0.10" id="distanceParcourue" name="distanceParcourue" required>
 
-        <label for="dureeTrajet">Durée du trajet:</label>
-        <input type="time" id="dureeTrajet" name="dureeTrajet" required>
+    
 
 
-       Type de transport : <select id="transportType" name="transportType" required>
+       Type de transport : <select id="transportType" name="TypeDeTransport" required>
             <option value="1" <?php if (!empty($transport_id) && $transport_id == "1") {
                                     echo "selected";
                                 } ?>>Vélo</option>
