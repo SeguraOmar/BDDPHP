@@ -9,6 +9,12 @@
 <body>
 
 
+<header>
+    <a href="../controllers/controller-home.php"><h2> HOME </h2></a>
+    <a href="../controllers/controller-deconnect.php"><button class="deconnect"> Deconnexion </button></a>
+</header>
+
+
 <form class="formTrajet" action="../controllers/controller-trajet.php" method="post" enctype="multipart/form-data">
         <label for="dateTrajet">Date du trajet:</label>
         <input type="date" id="dateTrajet" name="dateTrajet" required>
@@ -38,6 +44,7 @@
             <button type="submit">Ajouter</button><br>
 
             <input  type="submit" value="Enregistrer le trajet">
+            <a href="../controllers/controller-home.php"><button type="button">Annuler le trajet</button></a>
     </form>
     
 </body>

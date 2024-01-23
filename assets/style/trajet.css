@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background : linear-gradient(90deg, rgba(29, 0, 60, 1) 30%, rgba(60, 3, 113, 1) 61%, rgba(90, 1, 167, 1) 89%);
     margin: 0;
 }
 
@@ -8,7 +8,7 @@ body {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,3 +53,33 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #2980b9;
 }
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+body > header > a:nth-child(1) > h2 {
+
+    color: rgb(255, 255, 255);
+    margin: 2vh;
+
+    
+}
+
+body > header > a:nth-child(2) > button {
+    margin: 2vh;
+    background: #4b0971;
+}
+
+a {
+    text-decoration: none;
+}
+
