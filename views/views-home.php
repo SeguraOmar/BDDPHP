@@ -20,7 +20,6 @@
 
 <div class="button">
     <a href="../controllers/controller-trajet.php"><button>Créer un trajet</button></a>
-    <button>Modifier un trajet</button>
     <a href="../controllers/controller-historique.php"><button>Afficher mes trajets</button></a>
     <a href="../controllers/controller-profil.php"><button>Mon Profil</button></a>
 </div>

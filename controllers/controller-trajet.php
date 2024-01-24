@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     trajet::create($rideDate,$rideDistance,$user_id,$transport_id);
+    header("Location: controller-historique.php");
 }
 
 

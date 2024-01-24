@@ -19,14 +19,5 @@ if (isset($_SESSION['user'])) {
 }
 
 
-
-
-
-
-
-
-
-
-
 include_once "../views/view-profil.php";
 ?>

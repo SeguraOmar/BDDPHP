@@ -1,6 +1,8 @@
 <?php
 // j'appelle ma config et mon utilisateur
 require_once '../config/config.php';
+
+require_once "../models/enterprise.php";
 require_once '../models/utilisateur.php';
 // Vérification des données postées depuis le formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

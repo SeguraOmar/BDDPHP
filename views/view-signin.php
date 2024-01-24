@@ -50,6 +50,7 @@
 
         <!-- Bouton de soumission -->
         <input type="submit" value="Se connecter">
+        <a href="../controllers/controller-signup.php"><button type="button">S'inscrire</button></a>
     </form>
 
     <!-- Footer -->

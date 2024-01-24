@@ -38,12 +38,10 @@ try {
    {
        try {
            // Les informations de connexion à la base de données
-           $dbName = "trajet";
-           $dbUser = "Omar";
-           $dbPassword = "Frizbee76";
+           
 
            // Création de l'objet PDO pour la connexion à la base de données
-           $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser, $dbPassword);
+           $db = new PDO("mysql:host=localhost;dbname=".DB_NAME, DB_USER, DB_PASS);
            // Paramétrage des erreurs PDO pour les afficher en cas de problème
            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
            $sql = "SELECT * FROM ride NATURAL JOIN transport WHERE user_id = :user_id";
