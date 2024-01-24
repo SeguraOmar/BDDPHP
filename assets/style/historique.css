@@ -1,0 +1,121 @@
+/* Réinitialisation des styles par défaut */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles généraux pour le corps de la page */
+body {
+    font-family: 'Arial', sans-serif;
+    background : linear-gradient(90deg, rgba(29, 0, 60, 1) 30%, rgba(60, 3, 113, 1) 61%, rgba(90, 1, 167, 1) 89%);
+    margin: 0;
+}
+
+/* Styles pour l'en-tête */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+body > header > a:nth-child(1) > h2 {
+
+    color: rgb(255, 255, 255);
+    margin: 2vh;
+
+    
+}
+
+body > header > a:nth-child(2) > button {
+    margin: 2vh;
+    background: #4b0971;
+}
+
+a {
+    text-decoration: none;
+}
+/* Styles pour le bouton de déconnexion */
+.deconnect {
+
+    margin: 2vh;
+    background: #4b0971;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/* Styles pour le conteneur principal */
+.container {
+    width: 50vh;
+    margin: 2vh auto;
+    padding: 2vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styles pour les titres de section */
+.container h2 {
+    color: #333;
+}
+
+/* Styles pour les paragraphes dans la section des trajets */
+.container p {
+    margin-bottom: 10px;
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styles pour la balise hr */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+/* Animation pour créer un effet de clignotement */
+@keyframes blink {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Application de l'animation à la balise hr */
+hr::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #fff; /* Couleur de fond pour le clignotement */
+    width: 100%;
+    animation: blink 2s infinite;
+}
