@@ -93,7 +93,7 @@ try {
     $dbName = "trajet";
     $dbUser = "Omar";
     $dbPassword ="Frizbee76";
-    $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser,  $dbPassword);
+    $db = new PDO("mysql:host=localhost;dbname=".DB_NAME, DB_USER, DB_PASS);
     
     
     //stockage de ma requete toujours avant le catch
