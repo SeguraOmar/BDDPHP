@@ -1,6 +1,7 @@
-<?php  
+<?php
 
-class Utilisateur {
+class Utilisateur
+{
 
     /**
      * Méthode permettant de créer un utilisateur
@@ -14,8 +15,9 @@ class Utilisateur {
      * @param string $password       Mot de passe de l'utilisateur
      * @param int    $id_enterprise  Id de l'entreprise de l'utilisateur
      */
-    public static function create(int $userValidate, string $lastname, string $firstname, string $pseudo, string $email, string $dob, string $password, int $id_enterprise) {
-        
+    public static function create(int $userValidate, string $lastname, string $firstname, string $pseudo, string $email, string $dob, string $password, int $id_enterprise)
+    {
+
         try {
             // Les informations de connexion à la base de données
             $dbName = "trajet";
@@ -23,7 +25,7 @@ class Utilisateur {
             $dbPassword = "Frizbee76";
 
             // Création de l'objet PDO pour la connexion à la base de données
-            $db = new PDO("mysql:host=localhost;dbname=".DB_NAME, DB_USER, DB_PASS);
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
             // Paramétrage des erreurs PDO pour les afficher en cas de problème
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -128,5 +130,32 @@ class Utilisateur {
             die();
         }
     }
+
+    public static function UpdateProfil(int $user_id, string $lastname, string $firstname, string $pseudo, string $email)
+    {
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+
+            // stockage de ma requete dans une variable
+            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_email` = :email  WHERE `user_id` = :user_id";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            $query->bindValue(':lastname', htmlspecialchars($lastname), PDO::PARAM_STR);
+            $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
+            $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
+            $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
+            
+
+            // on execute la requête
+            $query->execute();
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
 }
-?>
