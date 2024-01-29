@@ -109,7 +109,7 @@
 
 
         <input type="submit" value="S'enregistrer">
-        <a href="../controllers/controller-signin.php"><input type="button" value="Se connecter"></a>
+        <a href="../controllers/controller-signin.php"><button type="button">Se connecter</button></a>
     </form>
 
     <!-- Footer -->

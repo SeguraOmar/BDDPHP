@@ -17,6 +17,27 @@ else if(isset($_SESSION["user"])){
     $trajets = trajet::historique($user_id);
 }
 
+// delete trajet 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ride_id = isset($_POST['ride_id']) ? intval($_POST['ride_id']) : 0;
+
+    if ($ride_id > 0) {
+        // config
+        require_once '../config.php';
+        // models
+        require_once '../models/trajet.php';
+
+        trajet::deleteRide($ride_id);
+    }
+
+    // Redirection après suppression
+    header("Location: ../controllers/controller-historique.php");
+    exit();
+} 
+
+
+
 
 
 

@@ -57,4 +57,27 @@ try {
            die();
        }
    }
+
+
+   public static function deleteRide(int $ride_id) {
+
+
+    try {
+
+        // Création de l'objet PDO pour la connexion à la base de données
+        $db = new PDO("mysql:host=localhost;dbname=".DB_NAME, DB_USER, DB_PASS);
+        // Paramétrage des erreurs PDO pour les afficher en cas de problème
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM `trajet` WHERE `ride_id` = :ride_id";
+        // Préparation de la requête
+        $query = $db->prepare($sql);
+        $query->bindValue(":ride_id", $ride_id, PDO::PARAM_INT).
+            $query->execute();
+            $result =  $query->fetchAll(PDO::FETCH_ASSOC);
+            return $result; 
+    } catch (PDOException $e) {
+        // En cas d'erreur, affichage du message d'erreur et arrêt du script
+        echo "Erreur : " . $e->getMessage();
+        die();
+    }}
 }
