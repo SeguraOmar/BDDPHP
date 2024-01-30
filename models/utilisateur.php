@@ -131,14 +131,14 @@ class Utilisateur
         }
     }
 
-    public static function UpdateProfil(int $user_id, string $lastname, string $firstname, string $pseudo, string $email)
+    public static function UpdateProfil(int $user_id, string $lastname, string $firstname, string $pseudo, string $email, string $photo)
     {
         try {
             // Création d'un objet $db selon la classe PDO
             $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
 
             // stockage de ma requete dans une variable
-            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_email` = :email  WHERE `user_id` = :user_id";
+            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_email` = :email, `user_photo` = :photo  WHERE `user_id` = :user_id";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $db->prepare($sql);
@@ -149,10 +149,12 @@ class Utilisateur
             $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
             $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
+            $query->bindValue(':photo', htmlspecialchars($photo), PDO::PARAM_STR);
             
 
             // on execute la requête
             $query->execute();
+            var_dump("ok");
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
             die();
