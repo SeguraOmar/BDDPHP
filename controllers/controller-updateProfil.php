@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = $_POST["firstname"];
     $pseudo = $_POST["pseudo"];
     $email = $_POST["email"];
-    $photo = $_FILES["user_photo"];
+    $photo = $_FILES["user_photo"]['name'];
 
     // Mettez à jour le profil
     
