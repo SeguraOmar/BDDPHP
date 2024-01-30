@@ -30,7 +30,7 @@
             <li>Adresse e-mail : <?= $mail ?></li>
             <li>Date de naissance : <?= $naissance ?></li>
             <!-- Si $photo contient le chemin vers l'image, vous pouvez l'afficher comme suit -->
-            <li>Photo : <img src="<?= $photo ?>" alt="Photo de profil"></li>
+            <li><img src="../assets/image/<?= $photo ?>" alt="Photo de profil"></li>
         </ul>
 
         <a href="../controllers/controller-updateProfil.php"><button type="button">Modifier le profil</button></a>

@@ -1,19 +1,19 @@
-<?php 
+ <?php
 
-session_start();
-if(isset($_SESSION["user"])){
-$date = date('d F Y');
-$pseudo = $_SESSION['user']['user_pseudo'];
-// $defaultPic = $_SESSION['user']['user_default'];
-}
-
-
+    session_start();
+    if (isset($_SESSION["user"])) {
+        $date = date('d F Y');
+        $pseudo = $_SESSION['user']['user_pseudo'];
+        // $defaultPic = $_SESSION['user']['user_default'];
+    }
 
 
 
 
 
-?>
+
+
+    ?>
 
 
 
