@@ -15,6 +15,8 @@ if (isset($_SESSION['user'])) {
     $mail = $_SESSION['user']['user_email'];
     $naissance = $_SESSION['user']['user_dateofbirth'];
     $photo = $_SESSION['user']['user_photo'];
+    $describ = $_SESSION['user']['user_describ'];
+
 
 
 }

@@ -23,15 +23,16 @@
 
         <h1>Profil de <?= $pseudo ?></h1>
 
-        <ul>
-            <li>Entreprise : <?= $entreprise ?></li>
-            <li>Nom : <?= $lastname ?></li>
-            <li>Prénom : <?= $firstname ?></li>
-            <li>Adresse e-mail : <?= $mail ?></li>
-            <li>Date de naissance : <?= $naissance ?></li>
-            <!-- Si $photo contient le chemin vers l'image, vous pouvez l'afficher comme suit -->
-            <li><img src="../assets/image/<?= $photo ?>" alt="Photo de profil"></li>
-        </ul>
+        <p>Nom : <?= $lastname ?></p>
+        <p>Entreprise : <?= $entreprise ?></p>
+        <p>Prénom : <?= $firstname ?></p>
+        <p>Adresse e-mail : <?= $mail ?></p>
+        <p>Date de naissance : <?= $naissance ?></p>
+        <p>Ma description : <?= $describ ?></p>
+
+        <!-- Si $photo contient le chemin vers l'image, vous pouvez l'afficher comme suit -->
+        <img src="../assets/image/<?= $photo ?>" alt="Photo de profil">
+
 
         <a href="../controllers/controller-updateProfil.php"><button type="button">Modifier le profil</button></a>
 
