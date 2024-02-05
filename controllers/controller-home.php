@@ -1,11 +1,12 @@
  <?php
-
+include_once "../models/utilisateur.php";
     session_start();
     if (isset($_SESSION["user"])) {
         $date = date('d F Y');
         $pseudo = $_SESSION['user']['user_pseudo'];
+        $photo = $_SESSION['user']['user_photo'];}
         // $defaultPic = $_SESSION['user']['user_default'];
-    }
+    
 
 
 

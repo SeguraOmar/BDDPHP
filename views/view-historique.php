@@ -29,7 +29,7 @@
             echo "<p>Date du trajet : " . $trajet["ride_date"] . "</p>";
             echo "<p>Distance du trajet en KM : " . $trajet["ride_distance"] . "</p>";
             echo "<p>Type de transport : " . $trajet["transport_type"] . "</p>";
-            echo "<form action='' method='post' onsubmit='return confirm(\"Voulez-vous supprimer le trajet? (La suppression sera effectuée même en cliquant sur Annuler)\")'>";
+            echo "<form action='' method='post' onsubmit='return confirm(\"Voulez-vous supprimer le trajet?\")'>";
             echo "    <input type='hidden' name='ride_id' value='" . $trajet["ride_id"] . "'>";
             echo "    <input type='submit' name='delete' value='delete'>";
             echo "</form>";

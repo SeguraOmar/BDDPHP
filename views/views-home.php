@@ -15,6 +15,7 @@
  <div class="bienvenue-container">   
 <h1>
     Bienvenue, <?php echo $pseudo ?></h1>
+    <img src="../assets/image/<?= $photo ?>" alt="">
    <span> <?php echo $date ?></span>
 </div>     
 

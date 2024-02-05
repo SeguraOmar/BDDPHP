@@ -19,12 +19,15 @@ header a {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 h1 {
@@ -37,13 +40,14 @@ p {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
+    width: 17rem;
+    height: 22rem;
+    margin-top: 2rem;
     border-radius: 8px;
 }
 
 button {
+    width: 100%;
     background-color: #4b0971;
     color: #fff;
     padding: 10px 20px;
@@ -52,9 +56,18 @@ button {
     cursor: pointer;
     font-size: 1.2em;
     margin-top: 20px;
+    
 }
 
 button:hover {
     background-color: #45a049;
 }
 
+body > div > button {
+    background-color: rgb(201, 0, 0);
+    
+}
+
+body > div > button:hover {
+    background-color: black;
+}

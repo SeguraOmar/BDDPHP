@@ -77,3 +77,10 @@ span{
 .button button:hover {
     background-color: #5a01a7;
 }
+
+img {
+    width: 40%;
+    height: auto;
+    border-radius: 0.5%;
+    margin-top: 10px;
+}

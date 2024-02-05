@@ -35,6 +35,7 @@
 
 
         <a href="../controllers/controller-updateProfil.php"><button type="button">Modifier le profil</button></a>
+        <button type="button">Supprimer mon profil</button>
 
     </div>
 
