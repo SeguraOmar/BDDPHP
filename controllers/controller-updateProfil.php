@@ -4,8 +4,6 @@ require_once "../models/utilisateur.php";
 require_once "../models/enterprise.php";
 
 session_start();
-var_dump($_SESSION);
-var_dump($_FILES);
 if (!isset($_SESSION["user"])) {
   // Si l'utilisateur n'est pas connecté, on le renvoie vers la page de connexion 
   header("Location: ../controller-signin.php");

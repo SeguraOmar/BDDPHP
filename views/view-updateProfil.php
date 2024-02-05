@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style/updateProfil.css"/>
     <title>Document</title>
 </head>
 
@@ -27,6 +28,7 @@
         <textarea cols="30" rows="10" name="user_describ"><?= $_SESSION['user']['user_describ'] ?></textarea>
         Ajouter une photo <input type="file" name="user_photo" accept="image/*"><br>
         <input type="submit" value="Enregistrer">
+        <a href="../controllers/controller-home.php"><button type="button">Annuler</button></a>
     </form>
 
 </body>
