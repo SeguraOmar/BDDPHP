@@ -16,7 +16,7 @@
         <!-- Votre code pour l'en-tête -->
     </header>
 
-    <h2>Log in</h2>
+    <h2>Connexion</h2>
 
     <!-- Formulaire de connexion -->
     <form action="controller-signin.php" method="POST" novalidate>
