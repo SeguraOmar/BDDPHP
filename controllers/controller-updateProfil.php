@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Mettez à jour le profil
 
-  Utilisateur::UpdateProfil($user_id, $lastname, $firstname, $pseudo, $describ, $email, $photo, $entreprise);
+  Utilisateur::UpdateProfil($user_id, $lastname, $firstname, $pseudo, $describ, $email, $photo);
 
   $_SESSION["user"] = Utilisateur::getInfos($pseudo);
 

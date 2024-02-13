@@ -131,7 +131,7 @@ class Utilisateur
         }
     }
 
-    public static function UpdateProfil(int $user_id, string $lastname, string $firstname, string $pseudo, string $describ, string $email, string $photo, int $entreprise)
+    public static function UpdateProfil(int $user_id, string $lastname, string $firstname, string $pseudo, string $describ, string $email, string $photo)
     {
         try {
             // Création d'un objet $db selon la classe PDO
@@ -139,7 +139,7 @@ class Utilisateur
 
             // stockage de ma requete dans une variable
             $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo,
-            `user_describ` = :describ, `user_email` = :email, `user_photo` = :photo, `enterprise_id` = :entreprise  WHERE `user_id` = :user_id";
+            `user_describ` = :describ, `user_email` = :email, `user_photo` = :photo WHERE `user_id` = :user_id";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $db->prepare($sql);
@@ -151,7 +151,6 @@ class Utilisateur
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
             $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
             $query->bindValue(':photo', htmlspecialchars($photo), PDO::PARAM_STR);
-            $query->bindValue(':entreprise', $entreprise, PDO::PARAM_INT);
             $query->bindValue(':describ', htmlspecialchars($describ), PDO::PARAM_STR);
 
 
