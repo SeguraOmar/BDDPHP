@@ -16,10 +16,19 @@ if (isset($_SESSION['user'])) {
     $naissance = $_SESSION['user']['user_dateofbirth'];
     $photo = $_SESSION['user']['user_photo'];
     $describ = $_SESSION['user']['user_describ'];
-
-
-
+  
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST["delete"])) {
+        if ($_POST["delete"] === "delete") {
+            Utilisateur::deleteUser($_SESSION['user']['user_id']);
+            header("Location: controller-signin.php");
+            exit();
+        }
+    }
+}
+
 
 
 include_once "../views/view-profil.php";

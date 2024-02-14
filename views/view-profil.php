@@ -35,7 +35,9 @@
 
 
         <a href="../controllers/controller-updateProfil.php"><button type="button">Modifier le profil</button></a>
-        <button type="button">Supprimer mon profil</button>
+        <form method="post" action="../controllers/controller-profil.php">
+            <button type="submit" name="delete" value="delete">Supprimer le profil</button>
+        </form>
 
     </div>
 
