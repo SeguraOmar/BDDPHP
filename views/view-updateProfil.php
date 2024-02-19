@@ -18,7 +18,7 @@
         Email <input name="email" type="text" value="<?= $_SESSION['user']['user_email'] ?>"><br>
         <select class="fs-4 col-12 text-center" name="enterprise" id="enterprise"><br>
             <option value="" disabled selected>Selectionner une entreprise</option>
-            <?php foreach (Entreprise::getEntreprises() as $entreprise) { ?>
+            <?php foreach (json_decode(Entreprise::getEntreprises(),true) as $entreprise) { ?>
                 <option value="<?= $entreprise['enterprise_id']  ?>" <?= $entreprise['enterprise_id'] = $_SESSION['user']['enterprise_id'] ? 'selected' : '';  ?>><?= $entreprise['enterprise_name'] ?></option>
             <?php } ?>
         </select>

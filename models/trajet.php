@@ -51,7 +51,7 @@ class trajet
             $query->bindValue(":user_id", $user_id, PDO::PARAM_INT) .
                 $query->execute();
             $result =  $query->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return json_encode($result);
         } catch (PDOException $e) {
             // En cas d'erreur, affichage du message d'erreur et arrêt du script
             echo "Erreur : " . $e->getMessage();

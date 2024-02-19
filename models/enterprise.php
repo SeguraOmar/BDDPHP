@@ -6,9 +6,9 @@ class Entreprise {
     /**
          * Méthode permettant de récupérer les informations de toutes les entreprises
          *
-         * @return array
+         * @return string
          */
-        public static function getEntreprises(): array
+        public static function getEntreprises(): string
         {
             try {
                 // Création d'un objet $db selon la classe PDO
@@ -28,7 +28,7 @@ class Entreprise {
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
     
                 // on retourne le résultat
-                return $result;
+                return json_encode($result);
             } catch (PDOException $e) {
                 echo 'Erreur : ' . $e->getMessage();
                 die();

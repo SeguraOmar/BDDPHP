@@ -24,7 +24,7 @@
         <h2>Mes trajets</h2>
 
         <?php
-        foreach (trajet::historique($user_id) as $key => $trajet) {
+        foreach (json_decode(trajet::historique($user_id),true) as $key => $trajet) {
             echo "<p>Trajet :  " .  ($key + 1) . "</p>";
             echo "<p>Date du trajet : " . $trajet["ride_date"] . "</p>";
             echo "<p>Distance du trajet en KM : " . $trajet["ride_distance"] . "</p>";

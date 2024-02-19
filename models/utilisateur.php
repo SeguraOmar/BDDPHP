@@ -59,9 +59,9 @@ class Utilisateur
      * 
      * @param string $pseudo pseudo de l'utilisateur
      * 
-     * @return bool
+     * @return string
      */
-    public static function checkPseudoExists(string $pseudo): bool
+    public static function checkPseudoExists(string $pseudo): string
     {
         // le try and catch permet de gérer les erreurs, nous allons l'utiliser pour gérer les erreurs liées à la base de données
         try {
@@ -83,6 +83,8 @@ class Utilisateur
             // on récupère le résultat de la requête dans une variable
             $result = $query->fetch(PDO::FETCH_ASSOC);
 
+            return json_encode($result);
+
             // on vérifie si le résultat est vide car si c'est le cas, cela veut dire que le pseudo n'existe pas
             if (empty($result)) {
                 return false;
@@ -100,9 +102,9 @@ class Utilisateur
      * 
      * @param string $pseudo Pseudo de l'utilisateur
      * 
-     * @return array
+     * @return string
      */
-    public static function getInfos(string $pseudo): array
+    public static function getInfos(string $pseudo): string
     {
         try {
             // Création d'un objet $db selon la classe PDO
@@ -122,6 +124,8 @@ class Utilisateur
 
             // on récupère le résultat de la requête dans une variable
             $result = $query->fetch(PDO::FETCH_ASSOC);
+
+           return json_encode($result);
 
             // on retourne le résultat
             return $result;

@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   Utilisateur::UpdateProfil($user_id, $lastname, $firstname, $pseudo, $describ, $email, $photo);
 
-  $_SESSION["user"] = Utilisateur::getInfos($pseudo);
+  $_SESSION["user"] = json_decode(Utilisateur::getInfos($pseudo),true);
 
 
 

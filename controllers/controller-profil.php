@@ -1,10 +1,13 @@
 <?php 
+session_start();
 require_once "../config/config.php";
 require_once '../models/utilisateur.php';
+require_once '../models/enterprise.php';
 
 
 
-session_start();
+
+
 
 if (isset($_SESSION['user'])) {
     $user_id = $_SESSION['user']['user_id'];
@@ -16,7 +19,7 @@ if (isset($_SESSION['user'])) {
     $naissance = $_SESSION['user']['user_dateofbirth'];
     $photo = $_SESSION['user']['user_photo'];
     $describ = $_SESSION['user']['user_describ'];
-  
+    
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

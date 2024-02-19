@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['pseudo'] = 'Utilisateur inconnu';
         } else {
             // Récupération des informations de l'utilisateur via la méthode getInfos()
-            $UtilisateurInfos = Utilisateur::getInfos($_POST['pseudo']);
+            $UtilisateurInfos  = json_decode(Utilisateur::getInfos($_POST['pseudo']),true);
 
             // Utilisation de password_verify pour valider le mot de passe
             if (password_verify($_POST['password'], $UtilisateurInfos['user_password'])) {

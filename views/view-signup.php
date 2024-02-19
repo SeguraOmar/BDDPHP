@@ -55,7 +55,7 @@
             <select type="text" id="enterprise" name="id_enterprise" value="<?= isset($_POST['id_enterprise']) ? htmlspecialchars($_POST['id_enterprise']) : '' ?>">
                 <option value="">--please choose an option---</option>
                 <?php
-                foreach (Entreprise::getEntreprises() as $entreprise) { ?>
+                foreach (json_decode(Entreprise::getEntreprises(), true) as $entreprise) { ?>
                     <option value="<?= $entreprise["enterprise_id"]?>"> <?= $entreprise["enterprise_name"]?></option>
 
                 <?php
