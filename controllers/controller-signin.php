@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Tableau d'erreurs (stockage des erreurs)
     $errors = [];
 
+
     // Validation du champ pseudo
     if (empty($_POST['pseudo'])) {
         $errors['pseudo'] = 'Veuillez saisir votre pseudo';
@@ -21,25 +22,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['password'] = 'Veuillez saisir votre mot de passe';
     }
 
+
+
+
     // Si les champs sont valides, commence les tests
     if (empty($errors)) {
         // Vérification de l'existence du pseudo avec la méthode checkPseudoExists de la classe Utilisateur
         if (!Utilisateur::checkPseudoExists($_POST['pseudo'])) {
             $errors['pseudo'] = 'Utilisateur inconnu';
         } else {
+
             // Récupération des informations de l'utilisateur via la méthode getInfos()
-            $UtilisateurInfos  = json_decode(Utilisateur::getInfos($_POST['pseudo']),true);
+            $UtilisateurInfos  = json_decode(Utilisateur::getInfos($_POST['pseudo']), true);
+            
+            if ($UtilisateurInfos['user_validate'] == 1) {
+                $errors['connexion'] = 'Votre compte est banni';
+                if (password_verify($_POST['password'], $UtilisateurInfos['user_password'])) {
+                    $_SESSION["user"] = $UtilisateurInfos;
+                    unset($_SESSION["user"]["user_password"]);
+                    // Si la validation du mot de passe est réussie, redirection vers controller-home.php
+                    header('Location: controller-home.php');
+                } else {
+                    // Sinon, ajout d'une erreur de connexion au tableau d'erreurs
+                    $errors['connexion'] = 'Mauvais mot de passe';
+                }
+            } else {
+                $errors['connexion'] = 'Votre compte est banni';
+            }
 
             // Utilisation de password_verify pour valider le mot de passe
-            if (password_verify($_POST['password'], $UtilisateurInfos['user_password'])) {
-                $_SESSION["user"] = $UtilisateurInfos;
-                unset($_SESSION["user"]["user_password"]);
-                // Si la validation du mot de passe est réussie, redirection vers controller-home.php
-                header('Location: controller-home.php');
-            } else {
-                // Sinon, ajout d'une erreur de connexion au tableau d'erreurs
-                $errors['connexion'] = 'Mauvais mot de passe';
-            }
         }
     }
 }

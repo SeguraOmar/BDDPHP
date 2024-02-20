@@ -44,7 +44,7 @@
         </label><br>
         <input type="password" id="password" name="password" value="">
         </span><br><br>
-
+ 
         <!-- Affichage des erreurs de connexion -->
         <p><?= $errors["connexion"] ?? "" ?></p>
 
